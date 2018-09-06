@@ -1,0 +1,8 @@
+.Games form {
+  padding-bottom: 15px;
+}
+
+.Games form textarea {
+  height: 300px;
+  font-size: 24px;
+}

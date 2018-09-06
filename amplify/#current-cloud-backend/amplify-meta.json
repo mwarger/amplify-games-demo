@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "gamesdemo-20180905203527-authRole",
+            "UnauthRoleArn": "arn:aws:iam::520335913573:role/gamesdemo-20180905203527-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::520335913573:role/gamesdemo-20180905203527-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "gamesdemo-20180905203527-deployment",
+            "UnauthRoleName": "gamesdemo-20180905203527-unauthRole",
+            "StackName": "gamesdemo-20180905203527",
+            "StackId": "arn:aws:cloudformation:us-east-1:520335913573:stack/gamesdemo-20180905203527/848e8080-b17d-11e8-9cd5-500c217b4a9a"
+        }
+    }
+}
