@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import { Authenticator } from "aws-amplify-react";
 import { Button } from "react-bootstrap";
+import { Authenticator } from "aws-amplify-react";
 import aws_exports from "../aws-exports";
 
 const Buttons = ({ facebookSignIn, googleSignIn, prefix }) => {

@@ -3,7 +3,8 @@ import VideoPlayer from 'react-simple-video-player';
 import { FullScreenCode } from 'mdx-deck/layouts'
 import { Appear } from 'mdx-deck'
 import Box from 'superbox'
-
+import { CodeSurfer } from "mdx-deck-code-surfer"
+import duotoneLight from "prism-react-renderer/themes/duotoneLight"
 export { default as theme } from './theme'
 
 # Bootstrap Your App with AWS Amplify
@@ -25,6 +26,7 @@ import { Image } from 'mdx-deck'
 <Image src='plumbing.jpg' />
 ---
 # What is Amplify?
+### Toolchain and Libraries
 <ul>
 <Appear>
 <li> Client-side library from Amazon</li>
@@ -35,6 +37,7 @@ import { Image } from 'mdx-deck'
 <li> Pinpoint for analytics and push notifications</li>
 <li> Service worker support</li>
 <li> Amazon Lex for Conversational Bots</li>
+<li>Powerful CLI</li>
 </Appear>
 </ul>
 ---
@@ -46,7 +49,7 @@ export default SplitRight
 <ul>
   <Appear>
     <li>Open-source on Github</li>
-    <li>Web - React, Angular, Vue, Vanilla</li>
+    <li>Web - React, Angular, Ionic, Vue, Vanilla</li>
     <li>Mobile – React Native, Android, and iOS</li>
     <li>Built with plugins and extensibility in mind</li>
     <li>Integration with AWS out of the box</li>
@@ -68,56 +71,140 @@ export default Split
   </Appear>
 </ul>
 ---
-
 <Box fontSize={48} my={4} css={{fontWeight: 'bold'}}>Amplify CLI</Box>
-
 <Box fontSize={48}  my={4} css={{fontWeight: 'bold'}}>Amplify Libraries</Box>
-
 ---
+<Box fontSize={48} my={4} css={{fontWeight: 'bold'}}>Amplify CLI</Box>
+<Box my={4} css={{color: 'transparent',
+   textShadow: '0 0 5px rgba(0,0,0,0.5)'}}>Amplify Libraries</Box>
+---
+
 ## Next Next Next Experience
 ---
-
-<Box fontSize={48} my={4} css={{fontWeight: 'bold'}}>Amplify CLI</Box>
-
-<Box my={4}>Amplify Libraries</Box>
-
-
----
-<VideoPlayer url="./auth_video.mp4" width={1280}
-    height={960}/>
----
-
 # Demo
-
+---
+## CloudFormation for the client
 ---
 
-<Box  my={4} >Amplify CLI</Box>
+<Box  my={4} css={{color: 'transparent',
+   textShadow: '0 0 5px rgba(0,0,0,0.5)'}}>Amplify CLI</Box>
 
 <Box my={4} fontSize={48} css={{fontWeight: 'bold'}}>Amplify Libraries</Box>
 
----
-# Amplify CLI
-## CloudFormation for the client
 ---
 # Auth
 ## Cognito and Identity Pools  
 #### (facebook/google/enterprise)
 ---
+<VideoPlayer url="./auth_video.mp4" width={1280}
+    height={960}/>
+---
+
+<CodeSurfer
+  title="Authenticator"
+    theme={duotoneLight}
+  notes="3 Steps to Authentication"
+  code={require("!raw-loader!./src/containers/AuthComponent.js")}
+  showNumbers={false}
+  steps={[
+    { range: [3,4], notes: "Import authenticator and config" },
+    { range: [52, 55], notes: "Add Authenticator component" },
+    { range: [31, 36], notes: "Handle state change" },
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="Custom Authentication"
+    theme={duotoneLight}
+  notes="Sign Up"
+  code={require("!raw-loader!./src/containers/Signup.js")}
+  showNumbers={true}
+  steps={[
+    { lines: [10], notes: "Import Auth" },
+    { range: [50, 56], notes: "Use the import to signUp" },
+    { range: [73, 77], notes: "MFA too!" },
+  ]}
+/>
+
+---
 # API
 ## Lambda and GraphQL out of the box
 #### (more on this later)
 ---
+
+<CodeSurfer
+  title="Game List"
+    theme={duotoneLight}
+  notes="Retrieving Data"
+  code={require("!raw-loader!./src/containers/Home.js")}
+  showNumbers={false}
+  steps={[
+    { tokens:{ 6: [1,2,3,4,5,8,9,10,11,12,13,14,15]}, notes: "Import API from aws-amplify" },
+    { lines: [24], notes: "Fetch games when component mounts" },
+    { range: [33,38], notes: "Use Api with named endpoint" },
+  ]}
+/>
+---
+
 # Storage
 ## S3 and Dynamo FTW
+
+---
+<CodeSurfer
+  title="Uploading Media"
+    theme={duotoneLight}
+  notes="Storage with S3"
+  code={require("!raw-loader!./src/containers/NewGame.js")}
+  showNumbers={false}
+  steps={[
+    { lines: [48], notes: "Utilize S3 for media" },
+    { lines: [9], notes: "Library" },
+  ]}
+/>
+---
+<CodeSurfer
+  title="S3"
+    theme={duotoneLight}
+  notes="Helper library"
+  code={require("!raw-loader!./src/libs/awsLib.js")}
+  showNumbers={false}
+  steps={[
+    { lines: [1], notes: "Import Storage" },
+    { range: [6, 8], notes: "Upload - don't worry about buckets or keys!" },
+  ]}
+/>
+---
+# Analytics
+---
+<CodeSurfer
+  title="Easy Analytics"
+    theme={duotoneLight}
+  code={require("!raw-loader!./src/containers/Games.js")}
+  showNumbers={false}
+  steps={[
+    { lines: [10], notes: "Import Analytics" },
+    { lines: [51], notes: "Easy event recording" },
+  ]}
+/>
 ---
 # Hosting
 ## DEV vs PROD
 ---
+```
+amplify publish
+```
+---
 # GraphQL Transforms
+---
+# Thank you!
+### Feedback is appreciated!
 ---
 # Resources
 
-- https://github.com/mwarger/games-app-react
-- https://github.com/mwarger/games-app-api
+- https://github.com/mwarger/amplify-games-demo
 - https://aws.github.io/aws-amplify/
-- @mwarger
+- Twitter/Github/Medium @mwarger
+
+### ... and stickers!

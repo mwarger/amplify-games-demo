@@ -31,13 +31,10 @@ export default class Home extends Component {
   };
 
   games = async () => {
-    const {
-      signInUserSession: {
-        idToken: { jwtToken }
-      }
-    } = await Auth.currentAuthenticatedUser();
-    // console.log('response', response)
-    return API.get("gamesapi", "/games/a98d1d07-1b22-4a7d-b680-0ee6114fb02a");
+    return await API.get(
+      "gamesapi",
+      "/games/a98d1d07-1b22-4a7d-b680-0ee6114fb02a"
+    );
   };
 
   renderGamesList(games) {
@@ -91,51 +88,9 @@ export default class Home extends Component {
     );
   }
 
-  post = async () => {
-    console.log("calling api");
-    const {
-      signInUserSession: {
-        idToken: {
-          payload: { sub }
-        }
-      }
-    } = await Auth.currentAuthenticatedUser();
-    console.log(sub);
-    const response = await API.post("gamesapi", "/games", {
-      body: {
-        id: uuid(),
-        content: "Tomb Raider",
-        attachment:
-          "https://images-na.ssl-images-amazon.com/images/I/51K8FfZ39aL._SY445_.jpg",
-        userId: sub
-      }
-    });
-    alert(JSON.stringify(response, null, 2));
-  };
-  get = async () => {
-    console.log("calling api");
-    const response = await API.get(
-      "gamesapi",
-      "/games/object/a98d1d07-1b22-4a7d-b680-0ee6114fb02a"
-    );
-    alert(JSON.stringify(response, null, 2));
-  };
-  list = async () => {
-    console.log("calling api");
-    const response = await API.get(
-      "gamesapi",
-      "/games/a98d1d07-1b22-4a7d-b680-0ee6114fb02a"
-    );
-    alert(JSON.stringify(response, null, 2));
-  };
-
   render() {
     return (
       <div className="Home">
-        {/* <button onClick={this.post}>POST</button>
-        <button onClick={this.get}>GET</button>
-        <button onClick={this.list}>LIST</button> */}
-
         {this.props.isAuthenticated ? this.renderGames() : this.renderLander()}
       </div>
     );
