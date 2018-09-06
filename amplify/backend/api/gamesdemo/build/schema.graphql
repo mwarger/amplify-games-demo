@@ -1,0 +1,115 @@
+type Mutation {
+  createReview(input: CreateReviewInput!): Review
+  updateReview(input: UpdateReviewInput!): Review
+  deleteReview(input: DeleteReviewInput!): Review
+}
+
+type Query {
+  getReview(id: ID!): Review
+  listReviews(filter: ModelReviewFilterInput, limit: Int, nextToken: String): ModelReviewConnection
+}
+
+type Subscription {
+  onCreateReview: Review @aws_subscribe(mutations: ["createReview"])
+  onUpdateReview: Review @aws_subscribe(mutations: ["updateReview"])
+  onDeleteReview: Review @aws_subscribe(mutations: ["deleteReview"])
+}
+
+type Review {
+  id: ID!
+  author: String
+  rating: Int!
+  gameId: ID!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelReviewConnection {
+  items: [Review]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelReviewFilterInput {
+  id: ModelIDFilterInput
+  author: ModelStringFilterInput
+  rating: ModelIntFilterInput
+  gameId: ModelIDFilterInput
+  and: [ModelReviewFilterInput]
+  or: [ModelReviewFilterInput]
+  not: ModelReviewFilterInput
+}
+
+input CreateReviewInput {
+  author: String
+  rating: Int!
+  gameId: ID!
+}
+
+input UpdateReviewInput {
+  id: ID!
+  author: String
+  rating: Int
+  gameId: ID
+}
+
+input DeleteReviewInput {
+  id: ID
+}

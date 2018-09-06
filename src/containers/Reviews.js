@@ -21,7 +21,7 @@ class ReviewsQuery extends TypedQuery<
 
 const ListReviews = gql`
   query ListReviews($gameId: ID!) {
-    reviews: queryReviewsByGameId(gameId: $gameId) {
+    reviews: listReviews(filter: { gameId: { eq: $gameId } }) {
       items {
         id
         author

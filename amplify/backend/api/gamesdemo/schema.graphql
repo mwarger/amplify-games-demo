@@ -1,0 +1,6 @@
+type Review @model {
+  id: ID!
+  author: String
+  rating: Int!
+  gameId: ID!
+}

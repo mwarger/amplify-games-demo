@@ -1,0 +1,14 @@
+{
+    "AppSyncApiName": "gamesdemo",
+    "MutationCreateReviewResponse": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Mutation.createReview.response.1536210204518",
+    "MutationUpdateReviewResponse": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Mutation.updateReview.response.1536210204518",
+    "schemaGraphql": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/schema.graphql.1536210204518",
+    "MutationCreateReviewRequest": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Mutation.createReview.request.1536210204518",
+    "MutationDeleteReviewResponse": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Mutation.deleteReview.response.1536210204518",
+    "MutationUpdateReviewRequest": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Mutation.updateReview.request.1536210204518",
+    "MutationDeleteReviewRequest": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Mutation.deleteReview.request.1536210204518",
+    "QueryGetReviewResponse": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Query.getReview.response.1536210204518",
+    "QueryListReviewsRequest": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Query.listReviews.request.1536210204518",
+    "QueryListReviewsResponse": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Query.listReviews.response.1536210204518",
+    "QueryGetReviewRequest": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Query.getReview.request.1536210204518"
+}
