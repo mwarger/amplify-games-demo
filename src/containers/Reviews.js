@@ -1,18 +1,18 @@
 // @flow
-import React from 'react'
-import Amplify, { graphqlOperation, Auth } from 'aws-amplify'
-import { Connect } from 'aws-amplify-react'
-import { ListGroup, ListGroupItem } from 'react-bootstrap'
-import NewReview from './NewReview'
+import React from "react";
+import Amplify, { graphqlOperation, Auth } from "aws-amplify";
+import { Connect } from "aws-amplify-react";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
+import NewReview from "./NewReview";
 
-import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 
 import type {
   ListReviewsQuery,
   ListReviewsQueryVariables
-} from '../operation-result-types.flow'
-import TypedQuery from './TypedQuery'
+} from "../operation-result-types.flow";
+import TypedQuery from "./TypedQuery";
 
 class ReviewsQuery extends TypedQuery<
   ListReviewsQuery,
@@ -30,21 +30,21 @@ const ListReviews = gql`
       }
     }
   }
-`
+`;
 
 type ReviewArgs = {
   userId: string,
   gameId: string
-}
+};
 
 export default ({ userId, gameId }: ReviewArgs) => {
-  if (!userId || !gameId) return null
+  if (!userId || !gameId) return null;
 
   return (
     <ReviewsQuery query={ListReviews} variables={{ gameId }}>
       {data => {
-        if (!data || !data.reviews) return null
-        const { reviews } = data
+        if (!data || !data.reviews) return null;
+        const { reviews } = data;
         return reviews && reviews.items && reviews.items.length ? (
           <ListGroup>
             <h4>Reviews</h4>
@@ -52,15 +52,15 @@ export default ({ userId, gameId }: ReviewArgs) => {
               item =>
                 item && (
                   <ListGroupItem key={item.id}>
-                    {item.author || 'Anonymous'} - {item.rating}
+                    {item.author || "Anonymous"} - {item.rating}
                   </ListGroupItem>
                 )
             )}
           </ListGroup>
         ) : (
           <p>No reviews to show!</p>
-        )
+        );
       }}
     </ReviewsQuery>
-  )
-}
+  );
+};

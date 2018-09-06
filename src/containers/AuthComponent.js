@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Authenticator } from 'aws-amplify-react';
-import { Button } from 'react-bootstrap';
-import aws_exports from '../aws-exports';
+import React, { Component, Fragment } from "react";
+import { Authenticator } from "aws-amplify-react";
+import { Button } from "react-bootstrap";
+import aws_exports from "../aws-exports";
 
 const Buttons = ({ facebookSignIn, googleSignIn, prefix }) => {
   return (
@@ -13,7 +13,7 @@ const Buttons = ({ facebookSignIn, googleSignIn, prefix }) => {
         className="socialButtonMargin"
         style={{ marginBottom: 10 }}
       >
-        <Icon name="facebook" /> {prefix} with Facebook
+        {prefix} with Facebook
       </Button>
       <Button
         color="google plus"
@@ -21,7 +21,7 @@ const Buttons = ({ facebookSignIn, googleSignIn, prefix }) => {
         onClick={googleSignIn}
         className="socialButtonMargin"
       >
-        <Icon name="google" /> {prefix} with Google
+        {prefix} with Google
       </Button>
     </Fragment>
   );
@@ -30,7 +30,7 @@ const Buttons = ({ facebookSignIn, googleSignIn, prefix }) => {
 export default class AuthComponent extends Component {
   handleStateChange = state => {
     console.log(state);
-    if (state === 'signedIn') {
+    if (state === "signedIn") {
       this.props.userHasAuthenticated(true);
     }
   };
@@ -38,15 +38,15 @@ export default class AuthComponent extends Component {
   render() {
     const federated = {
       google_client_id: aws_exports.aws_google_web_app_id,
-      facebook_app_id: '456'
+      facebook_app_id: "456"
     };
 
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center'
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center"
         }}
       >
         <Authenticator

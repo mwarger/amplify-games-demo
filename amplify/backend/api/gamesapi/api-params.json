@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/games",
+            "lambdaFunction": "gamesdemolambda",
+            "privacy": {
+                "private": true,
+                "auth": "rw"
+            }
+        }
+    ],
+    "resourceName": "gamesapi",
+    "apiName": "gamesdemo08021017",
+    "functionArns": [
+        {
+            "lambdaFunction": "gamesdemolambda"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "gamesdemo-20180905203527-authRole",
+        "unAuthRoleName": "gamesdemo-20180905203527-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "gamesdemolambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

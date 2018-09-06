@@ -2,17 +2,21 @@
 
 const awsmobile =  {
     "aws_project_region": "us-east-1",
-    "aws_cloud_logic_custom": [
-        {
-            "name": "gamesapi",
-            "endpoint": "https://298p1l6yil.execute-api.us-east-1.amazonaws.com/Prod",
-            "region": "us-east-1"
-        }
-    ],
+    "aws_cognito_identity_pool_id": "us-east-1:89a192fa-b923-4f8e-a874-60e83d88526d",
+    "aws_cognito_region": "us-east-1",
+    "aws_user_pools_id": "us-east-1_Tg9cJBzPp",
+    "aws_user_pools_web_client_id": "4pteqc6rj7rka2303a79akvhls",
     "aws_dynamodb_all_tables_region": "us-east-1",
     "aws_dynamodb_table_schemas": [
         {
-            "tableName": "gamesdb",
+            "tableName": "gamedemodynamodb",
+            "region": "us-east-1"
+        }
+    ],
+    "aws_cloud_logic_custom": [
+        {
+            "name": "gamesapi",
+            "endpoint": "https://sr3arlw09j.execute-api.us-east-1.amazonaws.com/Prod",
             "region": "us-east-1"
         }
     ]

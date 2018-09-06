@@ -1,0 +1,15 @@
+[ignore]
+.*babylon
+.*babel
+.*npmconf
+.*fbjs
+.*/node_modules/.*/test/
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

@@ -3,8 +3,9 @@ import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import config from "../config";
 import "./NewGame.css";
+import { v4 as uuid } from "uuid";
 
-import { API } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 import { s3Upload } from "../libs/awsLib";
 
 export default class NewGame extends Component {
@@ -46,9 +47,19 @@ export default class NewGame extends Component {
     try {
       const attachment = this.file ? await s3Upload(this.file) : null;
 
+      const {
+        signInUserSession: {
+          idToken: {
+            payload: { sub }
+          }
+        }
+      } = await Auth.currentAuthenticatedUser();
+
       await this.createGame({
+        id: uuid(),
         attachment,
-        content: this.state.content
+        content: this.state.content,
+        userId: sub
       });
       this.props.history.push("/");
     } catch (e) {

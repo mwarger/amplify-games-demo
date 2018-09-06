@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   HelpBlock,
   FormGroup,
   FormControl,
   ControlLabel
-} from 'react-bootstrap';
-import LoaderButton from '../components/LoaderButton';
-import './Signup.css';
-import { Auth } from 'aws-amplify';
+} from "react-bootstrap";
+import LoaderButton from "../components/LoaderButton";
+import "./Signup.css";
+import { Auth } from "aws-amplify";
 
 export default class Signup extends Component {
   constructor(props) {
@@ -15,10 +15,10 @@ export default class Signup extends Component {
 
     this.state = {
       isLoading: false,
-      email: '',
-      password: '',
-      confirmPassword: '',
-      confirmationCode: '',
+      email: "",
+      password: "",
+      confirmPassword: "",
+      confirmationCode: "",
       newUser: null
     };
   }
@@ -49,7 +49,10 @@ export default class Signup extends Component {
     try {
       const newUser = await Auth.signUp({
         username: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        attributes: {
+          email: this.state.email
+        }
       });
       this.setState({
         newUser
@@ -71,7 +74,7 @@ export default class Signup extends Component {
       await Auth.signIn(this.state.email, this.state.password);
 
       this.props.userHasAuthenticated(true);
-      this.props.history.push('/');
+      this.props.history.push("/");
     } catch (e) {
       alert(e.message);
       this.setState({ isLoading: false });

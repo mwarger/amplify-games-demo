@@ -1,0 +1,5 @@
+{
+    "tableName": "gamedemodynamodb",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}
