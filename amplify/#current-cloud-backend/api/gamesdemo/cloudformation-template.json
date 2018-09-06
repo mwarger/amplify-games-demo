@@ -60,6 +60,54 @@
         "MutationDeleteReviewResponse": {
             "Type": "String",
             "Description": "The S3 location for the Resolver: Mutation.deleteReview.response"
+        },
+        "QueryGetGameRequest": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Query.getGame.request"
+        },
+        "QueryGetGameResponse": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Query.getGame.response"
+        },
+        "QueryListGamesRequest": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Query.listGames.request"
+        },
+        "QueryListGamesResponse": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Query.listGames.response"
+        },
+        "MutationCreateGameRequest": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Mutation.createGame.request"
+        },
+        "MutationCreateGameResponse": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Mutation.createGame.response"
+        },
+        "MutationUpdateGameRequest": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Mutation.updateGame.request"
+        },
+        "MutationUpdateGameResponse": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Mutation.updateGame.response"
+        },
+        "MutationDeleteGameRequest": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Mutation.deleteGame.request"
+        },
+        "MutationDeleteGameResponse": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Mutation.deleteGame.response"
+        },
+        "GameReviewsRequest": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Game.reviews.request"
+        },
+        "GameReviewsResponse": {
+            "Type": "String",
+            "Description": "The S3 location for the Resolver: Game.reviews.response"
         }
     },
     "Resources": {
@@ -124,6 +172,10 @@
                     {
                         "AttributeName": "id",
                         "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "gameReviewsId",
+                        "AttributeType": "S"
                     }
                 ],
                 "ProvisionedThroughput": {
@@ -136,7 +188,29 @@
                 },
                 "StreamSpecification": {
                     "StreamViewType": "NEW_AND_OLD_IMAGES"
-                }
+                },
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "gsi-Game.reviews",
+                        "KeySchema": [
+                            {
+                                "AttributeName": "gameReviewsId",
+                                "KeyType": "HASH"
+                            }
+                        ],
+                        "Projection": {
+                            "ProjectionType": "ALL"
+                        },
+                        "ProvisionedThroughput": {
+                            "ReadCapacityUnits": {
+                                "Ref": "DynamoDBModelTableReadIOPS"
+                            },
+                            "WriteCapacityUnits": {
+                                "Ref": "DynamoDBModelTableWriteIOPS"
+                            }
+                        }
+                    }
+                ]
             }
         },
         "ReviewIAMRole": {
@@ -382,6 +456,321 @@
                 },
                 "ResponseMappingTemplateS3Location": {
                     "Ref": "MutationDeleteReviewResponse"
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "GameTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+                "TableName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "Game",
+                            {
+                                "Fn::GetAtt": [
+                                    "GraphQLAPI",
+                                    "ApiId"
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "KeySchema": [
+                    {
+                        "AttributeName": "id",
+                        "KeyType": "HASH"
+                    }
+                ],
+                "AttributeDefinitions": [
+                    {
+                        "AttributeName": "id",
+                        "AttributeType": "S"
+                    }
+                ],
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": {
+                        "Ref": "DynamoDBModelTableReadIOPS"
+                    },
+                    "WriteCapacityUnits": {
+                        "Ref": "DynamoDBModelTableWriteIOPS"
+                    }
+                },
+                "StreamSpecification": {
+                    "StreamViewType": "NEW_AND_OLD_IMAGES"
+                }
+            }
+        },
+        "GameIAMRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "GameTable",
+                            "role",
+                            {
+                                "Fn::GetAtt": [
+                                    "GraphQLAPI",
+                                    "ApiId"
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "appsync.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyName": "DynamoDBAccess",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "dynamodb:BatchGetItem",
+                                        "dynamodb:BatchWriteItem",
+                                        "dynamodb:PutItem",
+                                        "dynamodb:DeleteItem",
+                                        "dynamodb:GetItem",
+                                        "dynamodb:Scan",
+                                        "dynamodb:Query",
+                                        "dynamodb:UpdateItem"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "GameTable",
+                                                "Arn"
+                                            ]
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                "/",
+                                                [
+                                                    {
+                                                        "Fn::GetAtt": [
+                                                            "GameTable",
+                                                            "Arn"
+                                                        ]
+                                                    },
+                                                    "*"
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "GameDataSource": {
+            "Type": "AWS::AppSync::DataSource",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "Name": "GameTable",
+                "Type": "AMAZON_DYNAMODB",
+                "ServiceRoleArn": {
+                    "Fn::GetAtt": [
+                        "GameIAMRole",
+                        "Arn"
+                    ]
+                },
+                "DynamoDBConfig": {
+                    "AwsRegion": {
+                        "Fn::Select": [
+                            3,
+                            {
+                                "Fn::Split": [
+                                    ":",
+                                    {
+                                        "Fn::GetAtt": [
+                                            "GameTable",
+                                            "Arn"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "TableName": {
+                        "Ref": "GameTable"
+                    }
+                }
+            }
+        },
+        "GetGameResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "GameDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "getGame",
+                "TypeName": "Query",
+                "RequestMappingTemplateS3Location": {
+                    "Ref": "QueryGetGameRequest"
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Ref": "QueryGetGameResponse"
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "ListGameResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "GameDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "listGames",
+                "TypeName": "Query",
+                "RequestMappingTemplateS3Location": {
+                    "Ref": "QueryListGamesRequest"
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Ref": "QueryListGamesResponse"
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "CreateGameResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "GameDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "createGame",
+                "TypeName": "Mutation",
+                "RequestMappingTemplateS3Location": {
+                    "Ref": "MutationCreateGameRequest"
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Ref": "MutationCreateGameResponse"
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "UpdateGameResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "GameDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "updateGame",
+                "TypeName": "Mutation",
+                "RequestMappingTemplateS3Location": {
+                    "Ref": "MutationUpdateGameRequest"
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Ref": "MutationUpdateGameResponse"
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "DeleteGameResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "GameDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "deleteGame",
+                "TypeName": "Mutation",
+                "RequestMappingTemplateS3Location": {
+                    "Ref": "MutationDeleteGameRequest"
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Ref": "MutationDeleteGameResponse"
+                }
+            },
+            "DependsOn": "GraphQLSchema"
+        },
+        "GamereviewsResolver": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Fn::GetAtt": [
+                        "GraphQLAPI",
+                        "ApiId"
+                    ]
+                },
+                "DataSourceName": {
+                    "Fn::GetAtt": [
+                        "ReviewDataSource",
+                        "Name"
+                    ]
+                },
+                "FieldName": "reviews",
+                "TypeName": "Game",
+                "RequestMappingTemplateS3Location": {
+                    "Ref": "GameReviewsRequest"
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Ref": "GameReviewsResponse"
                 }
             },
             "DependsOn": "GraphQLSchema"

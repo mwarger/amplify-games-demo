@@ -4,3 +4,9 @@ type Review @model {
   rating: Int!
   gameId: ID!
 }
+
+type Game @model {
+  id: ID!
+  title: String
+  reviews: [Review] @connection
+}

@@ -1,6 +1,16 @@
-This is the example project from Bootstrap Your App with AWS-Amplify.
+## Usage
 
-The backend API project can be found here as an example - https://github.com/mwarger/games-app-api
+First `npm install`
+
+For slides: `npm run slides`
+
+For app: `npm start`
+
+For both: `npm run demo`
+
+## Description
+
+This is the example project from Bootstrap Your App with AWS-Amplify.
 
 This demo is heavily inspired by serverless-stack.com, adapted to work as a game catalog for demoing featuers of [AWS-Amplify](https://aws.github.io/aws-amplify/).
 

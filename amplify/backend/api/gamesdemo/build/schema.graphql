@@ -2,17 +2,25 @@ type Mutation {
   createReview(input: CreateReviewInput!): Review
   updateReview(input: UpdateReviewInput!): Review
   deleteReview(input: DeleteReviewInput!): Review
+  createGame(input: CreateGameInput!): Game
+  updateGame(input: UpdateGameInput!): Game
+  deleteGame(input: DeleteGameInput!): Game
 }
 
 type Query {
   getReview(id: ID!): Review
   listReviews(filter: ModelReviewFilterInput, limit: Int, nextToken: String): ModelReviewConnection
+  getGame(id: ID!): Game
+  listGames(filter: ModelGameFilterInput, limit: Int, nextToken: String): ModelGameConnection
 }
 
 type Subscription {
   onCreateReview: Review @aws_subscribe(mutations: ["createReview"])
   onUpdateReview: Review @aws_subscribe(mutations: ["updateReview"])
   onDeleteReview: Review @aws_subscribe(mutations: ["deleteReview"])
+  onCreateGame: Game @aws_subscribe(mutations: ["createGame"])
+  onUpdateGame: Game @aws_subscribe(mutations: ["updateGame"])
+  onDeleteGame: Game @aws_subscribe(mutations: ["deleteGame"])
 }
 
 type Review {
@@ -101,6 +109,7 @@ input CreateReviewInput {
   author: String
   rating: Int!
   gameId: ID!
+  gameReviewsId: ID
 }
 
 input UpdateReviewInput {
@@ -108,8 +117,41 @@ input UpdateReviewInput {
   author: String
   rating: Int
   gameId: ID
+  gameReviewsId: ID
 }
 
 input DeleteReviewInput {
+  id: ID
+}
+
+type Game {
+  id: ID!
+  title: String
+  reviews(filter: ModelReviewFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelReviewConnection
+}
+
+type ModelGameConnection {
+  items: [Game]
+  nextToken: String
+}
+
+input ModelGameFilterInput {
+  id: ModelIDFilterInput
+  title: ModelStringFilterInput
+  and: [ModelGameFilterInput]
+  or: [ModelGameFilterInput]
+  not: ModelGameFilterInput
+}
+
+input CreateGameInput {
+  title: String
+}
+
+input UpdateGameInput {
+  id: ID!
+  title: String
+}
+
+input DeleteGameInput {
   id: ID
 }
