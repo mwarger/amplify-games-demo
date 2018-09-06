@@ -1,0 +1,11 @@
+{
+    "appName": "gamesdemo",
+    "roleName": "pinpointLambdaRole4999e1d6",
+    "cloudWatchPolicyName": "cloudWatchPolicy4999e1d6",
+    "pinpointPolicyName": "pinpointPolicy4999e1d6",
+    "authPolicyName": "pinpoint_amplify_4999e1d6",
+    "unauthPolicyName": "pinpoint_amplify_4999e1d6",
+    "authRoleName": "gamesdemo-20180905203527-authRole",
+    "unauthRoleName": "gamesdemo-20180905203527-unauthRole",
+    "IAMPrefix": "520335913573"
+}

@@ -19,7 +19,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/auth/cognitoa3e85c76-cloudformation-template.yml",
 				"logicalId": "authcognitoa3e85c76"
 			},
-			"lastPushTimeStamp": "2018-09-06T05:04:36.505Z",
+			"lastPushTimeStamp": "2018-09-06T15:17:16.060Z",
 			"output": {
 				"AppClientSecret": "ai2l24kt45h51939pt6ae0kqn0st076r06ti5a16jjsk0060kgt",
 				"UserPoolId": "us-east-1_Tg9cJBzPp",
@@ -29,7 +29,7 @@
 				"IdentityPoolName": "cognitoa3e85c76_identitypool_a3e85c76",
 				"UserPoolName": "cognitoa3e85c76_userpool_a3e85c76"
 			},
-			"lastPushDirHash": "O5F3uKctBbRFHnYM5lQmIsuDHm0="
+			"lastPushDirHash": "JzwlJJ540jiFsd/2AS5wGwhgctw="
 		}
 	},
 	"storage": {
@@ -40,7 +40,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/storage/gamedemodynamodb-cloudformation-template.json",
 				"logicalId": "storagegamedemodynamodb"
 			},
-			"lastPushTimeStamp": "2018-09-06T05:04:36.520Z",
+			"lastPushTimeStamp": "2018-09-06T15:17:16.002Z",
 			"output": {
 				"PartitionKeyName": "id",
 				"Region": "us-east-1",
@@ -73,7 +73,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/function/gamesdemolambda-cloudformation-template.json",
 				"logicalId": "functiongamesdemolambda"
 			},
-			"lastPushTimeStamp": "2018-09-06T05:04:36.532Z",
+			"lastPushTimeStamp": "2018-09-06T15:17:16.017Z",
 			"output": {
 				"Region": "us-east-1",
 				"Arn": "arn:aws:lambda:us-east-1:520335913573:function:gamesdemolambda",
@@ -100,7 +100,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/api/gamesapi-cloudformation-template.json",
 				"logicalId": "apigamesapi"
 			},
-			"lastPushTimeStamp": "2018-09-06T05:04:36.542Z",
+			"lastPushTimeStamp": "2018-09-06T15:17:16.029Z",
 			"output": {
 				"ApiName": "gamesapi",
 				"RootUrl": "https://sr3arlw09j.execute-api.us-east-1.amazonaws.com/Prod"
@@ -123,8 +123,25 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apigamesdemo"
 			},
-			"lastPushTimeStamp": "2018-09-06T05:04:36.564Z",
+			"lastPushTimeStamp": "2018-09-06T15:17:16.032Z",
 			"lastPushDirHash": "uvo81ZJzWsFk9wXS1BWewfy3YG0="
+		}
+	},
+	"analytics": {
+		"gamesdemo": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/analytics/pinpoint-cloudformation-template.json",
+				"logicalId": "analyticsgamesdemo"
+			},
+			"lastPushTimeStamp": "2018-09-06T15:17:16.060Z",
+			"output": {
+				"appName": "gamesdemo",
+				"Region": "us-east-1",
+				"Id": "f7dc8e2658d942bf841fb085479f7eb4"
+			},
+			"lastPushDirHash": "4rU9m6iKea7Pfy1nFiu4QfJoupU="
 		}
 	}
 }

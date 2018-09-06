@@ -132,9 +132,9 @@ export default class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <button onClick={this.post}>POST</button>
+        {/* <button onClick={this.post}>POST</button>
         <button onClick={this.get}>GET</button>
-        <button onClick={this.list}>LIST</button>
+        <button onClick={this.list}>LIST</button> */}
 
         {this.props.isAuthenticated ? this.renderGames() : this.renderLander()}
       </div>

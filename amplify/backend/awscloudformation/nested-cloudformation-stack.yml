@@ -84,7 +84,7 @@
 				"TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/auth/cognitoa3e85c76-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "cognitoa3e85c76_identitypool_a3e85c76",
-					"allowUnauthenticatedIdentities": false,
+					"allowUnauthenticatedIdentities": true,
 					"thirdPartyAuth": false,
 					"lambdaLogPolicy": "cognitoa3e85c76_lambda_log_policy",
 					"openIdLambdaRoleName": "cognitoa3e85c76_openid_lambda_role",
@@ -196,6 +196,23 @@
 					"QueryListReviewsRequest": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Query.listReviews.request.1536210204518",
 					"QueryListReviewsResponse": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Query.listReviews.response.1536210204518",
 					"QueryGetReviewRequest": "s3://gamesdemo-20180905203527-deployment/amplify-appsync-files/Query.getReview.request.1536210204518"
+				}
+			}
+		},
+		"analyticsgamesdemo": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/analytics/pinpoint-cloudformation-template.json",
+				"Parameters": {
+					"appName": "gamesdemo",
+					"roleName": "pinpointLambdaRole4999e1d6",
+					"cloudWatchPolicyName": "cloudWatchPolicy4999e1d6",
+					"pinpointPolicyName": "pinpointPolicy4999e1d6",
+					"authPolicyName": "pinpoint_amplify_4999e1d6",
+					"unauthPolicyName": "pinpoint_amplify_4999e1d6",
+					"authRoleName": "gamesdemo-20180905203527-authRole",
+					"unauthRoleName": "gamesdemo-20180905203527-unauthRole",
+					"IAMPrefix": "520335913573"
 				}
 			}
 		}
