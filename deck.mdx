@@ -2,6 +2,7 @@ import { Split, SplitRight, Invert  } from 'mdx-deck/layouts'
 import VideoPlayer from 'react-simple-video-player';
 import { FullScreenCode } from 'mdx-deck/layouts'
 import { Appear } from 'mdx-deck'
+import Box from 'superbox'
 
 export { default as theme } from './theme'
 
@@ -23,17 +24,44 @@ import { Image } from 'mdx-deck'
 
 <Image src='plumbing.jpg' />
 ---
+
+<Box fontSize={48} my={4} css={{fontWeight: 'bold'}}>Amplify CLI</Box>
+
+<Box fontSize={48}  my={4} css={{fontWeight: 'bold'}}>Amplify Libraries</Box>
+
+---
+
+<Box fontSize={48} my={4} css={{fontWeight: 'bold'}}>Amplify CLI</Box>
+
+<Box my={4}>Amplify Libraries</Box>
+
+---
+
+<div>cli</div>
+
+---
+
+<Box  my={4} >Amplify CLI</Box>
+
+<Box my={4} fontSize={48} css={{fontWeight: 'bold'}}>Amplify Libraries</Box>
+
+---
 <VideoPlayer url="./auth_video.mp4" width={1280}
     height={960}/>
 ---
 # What is Amplify?
-- Client-side library from Amazon
-- Authentication with Cognito
-- API Gateway and Lambda
-- AppSync for GraphQL
-- Storage with S3 and DynamoDB
-- Pinpoint for analytics and push notifications
-- …and MORE
+<ul>
+<Appear>
+<li> Client-side library from Amazon</li>
+<li> Authentication with Cognito</li>
+<li> API Gateway and Lambda</li>
+<li> AppSync for GraphQL</li>
+<li> Storage with S3 and DynamoDB</li>
+<li> Pinpoint for analytics and push notifications</li>
+<li> Service worker support</li>
+<li> Amazon Lex for Conversational Bots</li>
+</Appear>
+</ul>
 ---
 export default SplitRight
 

@@ -13,6 +13,8 @@ const awsmobile =  {
             "region": "us-east-1"
         }
     ],
+    "aws_user_files_s3_bucket": "gamesdemobucket",
+    "aws_user_files_s3_bucket_region": "us-east-1",
     "aws_cloud_logic_custom": [
         {
             "name": "gamesapi",

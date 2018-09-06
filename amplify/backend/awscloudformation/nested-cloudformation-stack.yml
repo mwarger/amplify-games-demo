@@ -84,7 +84,7 @@
 				"TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/auth/cognitoa3e85c76-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "cognitoa3e85c76_identitypool_a3e85c76",
-					"allowUnauthenticatedIdentities": true,
+					"allowUnauthenticatedIdentities": false,
 					"thirdPartyAuth": false,
 					"lambdaLogPolicy": "cognitoa3e85c76_lambda_log_policy",
 					"openIdLambdaRoleName": "cognitoa3e85c76_openid_lambda_role",
@@ -136,6 +136,21 @@
 					"tableName": "gamedemodynamodb",
 					"partitionKeyName": "id",
 					"partitionKeyType": "S"
+				}
+			}
+		},
+		"storagegamesdemos3": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/gamesdemo-20180905203527-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"Parameters": {
+					"bucketName": "gamesdemobucket",
+					"authPolicyName": "s3_amplify_b4fd7742",
+					"unauthPolicyName": "s3_amplify_b4fd7742",
+					"authRoleName": "gamesdemo-20180905203527-authRole",
+					"unauthRoleName": "gamesdemo-20180905203527-unauthRole",
+					"authPermissions": "rw",
+					"unauthPermissions": ""
 				}
 			}
 		},

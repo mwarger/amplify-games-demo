@@ -1,0 +1,9 @@
+{
+    "bucketName": "gamesdemobucket",
+    "authPolicyName": "s3_amplify_b4fd7742",
+    "unauthPolicyName": "s3_amplify_b4fd7742",
+    "authRoleName": "gamesdemo-20180905203527-authRole",
+    "unauthRoleName": "gamesdemo-20180905203527-unauthRole",
+    "authPermissions": "rw",
+    "unauthPermissions": ""
+}
