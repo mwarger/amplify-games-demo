@@ -168,38 +168,6 @@ export default Split
 
 ---
 
-# API
-
-## Lambda and GraphQL out of the box
-
----
-
-# GraphQL Transforms
-
----
-
-## Lambda and API Gateway
-
-### GraphQL with AppSync
-
-### Custom Resolvers
-
----
-
-<CodeSurfer
-  title="Game List"
-    theme={duotoneLight}
-  notes="Retrieving Data"
-  code={require("!raw-loader!./src/containers/Home.js")}
-  showNumbers={false}
-  steps={[
-    { tokens:{ 6: [1,2,3,4,5,8,9,10,11,12,13,14,15]}, notes: "Import API from aws-amplify" },
-    { lines: [24], notes: "Fetch games when component mounts" },
-    { range: [33,38], notes: "Use Api with named endpoint" },
-  ]}
-/>
----
-
 # Storage
 
 ## S3 and Dynamo FTW!
@@ -243,12 +211,59 @@ export default Split
   ]}
 />
 ---
-# Hosting
-## DEV vs PROD
+
+# API
+
+## Lambda and GraphQL out of the box
+
 ---
+
+## Lambda and API Gateway
+
+---
+
+<CodeSurfer
+  title="Game List"
+    theme={duotoneLight}
+  notes="Retrieving Data"
+  code={require("!raw-loader!./src/containers/Home.js")}
+  showNumbers={false}
+  steps={[
+    { tokens:{ 6: [1,2,3,4,5,8,9,10,11,12,13,14,15]}, notes: "Import API from aws-amplify" },
+    { lines: [24], notes: "Fetch games when component mounts" },
+    { range: [33,38], notes: "Use Api with named endpoint" },
+  ]}
+/>
+---
+
+### GraphQL with AppSync
+
+#### Custom Resolvers
+
+---
+
+# GraphQL Transforms
+
+---
+
+<img src="schema_before.PNG" style={{ height: "50vh" }} />
+
+---
+
+<img src="schema_after.PNG" style={{ height: "90vh" }} />
+
+---
+
+# Hosting
+
+## DEV vs PROD
+
+---
+
 ```
 amplify publish
 ```
+
 ---
 
 <Box
@@ -267,6 +282,10 @@ amplify publish
 <Box my={4} fontSize={48} css={{ fontWeight: "bold" }}>
   Amplify Console
 </Box>
+
+---
+
+# Demo
 
 ---
 
