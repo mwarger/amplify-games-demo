@@ -27,9 +27,9 @@ const awsmobile = {
     "https://7ansecvq2jcajkaz4jhl25vone.appsync-api.us-east-1.amazonaws.com/graphql",
   aws_appsync_region: "us-east-1",
   aws_appsync_authenticationType: "API_KEY",
-  aws_appsync_apiKey: "da2-iq5bsokkxnhbrbfhj7smondgea",
+  aws_appsync_apiKey: "da2-pf6hxm4xknc3tepuphiwkuv36q",
   aws_mobile_analytics_app_id: "f7dc8e2658d942bf841fb085479f7eb4",
   aws_mobile_analytics_app_region: "us-east-1"
-};
+}
 
-export default awsmobile;
+export default awsmobile

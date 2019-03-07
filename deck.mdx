@@ -1,35 +1,42 @@
-import { Split, SplitRight, Invert  } from 'mdx-deck/layouts'
-import VideoPlayer from 'react-simple-video-player';
-import { FullScreenCode } from 'mdx-deck/layouts'
-import { Appear } from 'mdx-deck'
-import Box from 'superbox'
+import { Split, SplitRight, Invert } from "mdx-deck/layouts"
+import VideoPlayer from "react-simple-video-player"
+import { FullScreenCode } from "mdx-deck/layouts"
+import { Appear } from "mdx-deck"
+import Box from "superbox"
 import { CodeSurfer } from "mdx-deck-code-surfer"
 import duotoneLight from "prism-react-renderer/themes/duotoneLight"
-export { default as theme } from './theme'
-import { Image } from 'mdx-deck'
+export { default as theme } from "./theme"
+import { Image } from "mdx-deck"
 
 # Bootstrap Your App with AWS Amplify
----
-<img src='sponsor.png' style={{height: '100vh'}} />
 
 ---
+
+<img src="2019ConnectahaSponsors.png" style={{ height: "100vh" }} />
+
+---
+
 export default Invert
 
 ## Hello, my name is Mat Warger
 
 - Decade of software experience
-- Finance, marketing, insurance, sports industries 
+- Finance, marketing, insurance, sports industries
 - Startups and enterprise
 - Currently @KeyholeSoftware in Kansas City
 - Co-organizer JSKC
 - Organizer @GraphQLKC
 
 ---
-<img src='plumbing.jpg' style={{height: '100vh'}} />
+
+<img src="plumbing.jpg" style={{ height: "100vh" }} />
 
 ---
+
 # What is Amplify?
+
 ### Toolchain and Libraries
+
 <ul>
 <Appear>
 <li> Client-side library from Amazon</li>
@@ -49,6 +56,7 @@ export default SplitRight
 ![](map.jpg)
 
 ## Where is Amplify?
+
 <ul>
   <Appear>
     <li>Open-source on Github</li>
@@ -64,6 +72,7 @@ export default Split
 ![](gamegenie.jpg)
 
 ## Why is Amplify?
+
 <ul>
   <Appear>
     <li>Abstracts away common use-cases</li>
@@ -76,43 +85,69 @@ export default Split
 ---
 <Box fontSize={48} my={4} css={{fontWeight: 'bold'}}>Amplify CLI</Box>
 <Box fontSize={48}  my={4} css={{fontWeight: 'bold'}}>Amplify Libraries</Box>
+<Box fontSize={48}  my={4} css={{fontWeight: 'bold'}}>Amplify Console</Box>
 ---
 <Box fontSize={48} my={4} css={{fontWeight: 'bold'}}>Amplify CLI</Box>
 <Box my={4} css={{color: 'transparent',
    textShadow: '0 0 5px rgba(0,0,0,0.5)'}}>Amplify Libraries</Box>
+<Box my={4} css={{color: 'transparent',
+   textShadow: '0 0 5px rgba(0,0,0,0.5)'}}>Amplify Console</Box>
 ---
 
 ## Next Next Next Experience
+
 ---
+
 # Demo
+
 ---
+
 ## CloudFormation for the client
----
-
-<Box  my={4} css={{color: 'transparent',
-   textShadow: '0 0 5px rgba(0,0,0,0.5)'}}>Amplify CLI</Box>
-
-<Box my={4} fontSize={48} css={{fontWeight: 'bold'}}>Amplify Libraries</Box>
 
 ---
+
+<Box
+  my={4}
+  css={{ color: "transparent", textShadow: "0 0 5px rgba(0,0,0,0.5)" }}
+>
+  Amplify CLI
+</Box>
+
+<Box my={4} fontSize={48} css={{ fontWeight: "bold" }}>
+  Amplify Libraries
+</Box>
+
+<Box
+  my={4}
+  css={{ color: "transparent", textShadow: "0 0 5px rgba(0,0,0,0.5)" }}
+>
+  Amplify Console
+</Box>
+
+---
+
 # Auth
-## Cognito and Identity Pools  
+
+## Cognito and Identity Pools
+
 #### (facebook/google/enterprise)
+
 ---
-<VideoPlayer url="./auth_video.mp4" width={1280}
-    height={960}/>
+
+<img src="auth_docs.gif" style={{ height: "100vh" }} />
+
 ---
 
 <CodeSurfer
   title="Authenticator"
-    theme={duotoneLight}
+  theme={duotoneLight}
   notes="3 Steps to Authentication"
   code={require("!raw-loader!./src/containers/AuthComponent.js")}
   showNumbers={false}
   steps={[
-    { range: [3,4], notes: "Import authenticator and config" },
+    { range: [3, 4], notes: "Import authenticator and config" },
     { range: [52, 55], notes: "Add Authenticator component" },
-    { range: [31, 36], notes: "Handle state change" },
+    { range: [31, 36], notes: "Handle state change" }
   ]}
 />
 
@@ -120,21 +155,35 @@ export default Split
 
 <CodeSurfer
   title="Custom Authentication"
-    theme={duotoneLight}
+  theme={duotoneLight}
   notes="Sign Up"
   code={require("!raw-loader!./src/containers/Signup.js")}
   showNumbers={true}
   steps={[
     { lines: [10], notes: "Import Auth" },
     { range: [50, 56], notes: "Use the import to signUp" },
-    { range: [73, 77], notes: "MFA too!" },
+    { range: [73, 77], notes: "MFA too!" }
   ]}
 />
 
 ---
+
 # API
+
 ## Lambda and GraphQL out of the box
-#### (more on this later)
+
+---
+
+# GraphQL Transforms
+
+---
+
+## Lambda and API Gateway
+
+### GraphQL with AppSync
+
+### Custom Resolvers
+
 ---
 
 <CodeSurfer
@@ -152,9 +201,11 @@ export default Split
 ---
 
 # Storage
-## S3 and Dynamo FTW
+
+## S3 and Dynamo FTW!
 
 ---
+
 <CodeSurfer
   title="Uploading Media"
     theme={duotoneLight}
@@ -199,11 +250,32 @@ export default Split
 amplify publish
 ```
 ---
-# GraphQL Transforms
+
+<Box
+  my={4}
+  css={{ color: "transparent", textShadow: "0 0 5px rgba(0,0,0,0.5)" }}
+>
+  Amplify CLI
+</Box>
+<Box
+  my={4}
+  css={{ color: "transparent", textShadow: "0 0 5px rgba(0,0,0,0.5)" }}
+>
+  Amplify Libraries
+</Box>
+
+<Box my={4} fontSize={48} css={{ fontWeight: "bold" }}>
+  Amplify Console
+</Box>
+
 ---
+
 # Thank you!
+
 ### Feedback is appreciated!
+
 ---
+
 # Resources
 
 - https://github.com/mwarger/amplify-games-demo
