@@ -5,7 +5,7 @@ type Review @model {
   gameId: ID!
 }
 
-type Game @model {
+type Game @model @searchable {
   id: ID!
   title: String
   reviews: [Review] @connection
